@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { CATEGORIES } from "../api";
 
-// Starting values of an empty form (inputs always hold text)
 const emptyForm = {
   title: "",
   description: "",
@@ -18,7 +17,6 @@ const emptyForm = {
   imageUrl: "",
 };
 
-// Checks the values and returns an object of error messages ({} = no errors)
 function validate(values) {
   const errors = {};
   if (values.title.trim().length < 3) errors.title = "The title must be at least 3 characters.";
@@ -38,15 +36,7 @@ function validate(values) {
   return errors;
 }
 
-// Form used by both "Host an event" (AddEvent) and "Edit event" (EditEvent).
-// Props:
-//   event       - the event to edit (not passed when adding a new event)
-//   submitLabel - text of the main button
-//   saving      - true while the request is running (disables the buttons)
-//   onSubmit    - called with the event data when the form is valid
-//   onCancel    - called by the Cancel button
 function EventForm({ event, submitLabel, saving, onSubmit, onCancel }) {
-  // When editing, start with the event's values (numbers and the tags list become text)
   const startValues = event
     ? { ...event, price: String(event.price), capacity: String(event.capacity), tags: event.tags.join(", ") }
     : emptyForm;
@@ -54,19 +44,17 @@ function EventForm({ event, submitLabel, saving, onSubmit, onCancel }) {
   const [values, setValues] = useState(startValues);
   const [errors, setErrors] = useState({});
 
-  // One change handler for every input, using the input's "name"
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     setValues({ ...values, [name]: type === "checkbox" ? checked : value });
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); // stop the page from reloading
+    e.preventDefault();
     const newErrors = validate(values);
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // Turn the text values into the right data types before sending them to the API
       onSubmit({
         title: values.title.trim(),
         description: values.description.trim(),
@@ -85,7 +73,6 @@ function EventForm({ event, submitLabel, saving, onSubmit, onCancel }) {
     }
   }
 
-  // Red border on inputs that have an error
   function inputClass(field) {
     return errors[field] ? "form-control has-error" : "form-control";
   }

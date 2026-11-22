@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 
-// Links of the navigation bar (rendered with map)
 const links = [
   { to: "/", label: "Home" },
   { to: "/events", label: "Events" },
@@ -21,7 +20,6 @@ function Navbar() {
           <ul className="navbar-links">
             {links.map((link) => (
               <li key={link.to}>
-                {/* NavLink gets the "active" class when its page is open */}
                 <NavLink to={link.to} end className="navbar-link">
                   {link.label}
                 </NavLink>

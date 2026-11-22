@@ -1,6 +1,5 @@
 import TeamMemberCard from "../components/TeamMemberCard";
 
-// What makes Eventful different (rendered with .map)
 const values = [
   {
     title: "Open to everyone",
@@ -80,7 +79,6 @@ function About() {
       <section className="about-section">
         <h2 className="about-heading">Meet the team</h2>
         <div className="team-grid">
-          {/* Each member is passed to TeamMemberCard as props */}
           {team.map((member) => (
             <TeamMemberCard
               key={member.email}

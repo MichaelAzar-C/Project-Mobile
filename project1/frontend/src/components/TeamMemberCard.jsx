@@ -1,10 +1,9 @@
-// One team member on the About page (all the data comes in through props)
 function TeamMemberCard({ name, role, bio, email }) {
   const initials = name
     .split(" ")
     .map((word) => word[0])
     .join("")
-    .slice(0, 2); // "Jimmy Abou Ali" -> "JA"
+    .slice(0, 2);
 
   return (
     <article className="team-card">

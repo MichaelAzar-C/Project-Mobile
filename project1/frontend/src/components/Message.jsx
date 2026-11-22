@@ -1,5 +1,3 @@
-// A box with a title and a text, used for errors, "not found" and "nothing here" messages.
-// If an onRetry function is passed, a "Try again" button is shown.
 function Message({ title, text, onRetry }) {
   return (
     <div className="empty-state">

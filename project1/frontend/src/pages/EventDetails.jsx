@@ -6,9 +6,8 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { API_URL, TODAY } from "../api";
 
-// "Display a single event" view: GET /events/:id
 function EventDetails() {
-  const { id } = useParams(); // the ":id" part of the URL
+  const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -33,7 +32,6 @@ function EventDetails() {
   if (loading) return <Loader text="Loading event..." />;
   if (error) return <Message title="Event not found" text={error} />;
 
-  // The facts shown in boxes (rendered with map)
   const facts = [
     { label: "Date", value: new Date(event.date + "T00:00").toDateString() },
     { label: "Time", value: event.time },

@@ -4,7 +4,6 @@ const SUBJECTS = ["General question", "Hosting an event", "Feedback or suggestio
 
 const emptyForm = { name: "", email: "", subject: "", message: "" };
 
-// Checks every field and returns an object of error messages ({} = the form is valid)
 function validate(values) {
   const errors = {};
   if (values.name.trim().length < 2) {
@@ -22,22 +21,19 @@ function validate(values) {
   return errors;
 }
 
-// "Contact us" view: a form with event handling and input validation
 function Contact() {
-  const [values, setValues] = useState(emptyForm); // the value of every input
-  const [errors, setErrors] = useState({}); // error messages shown under the inputs
-  const [sent, setSent] = useState(false); // true after a valid message was sent
+  const [values, setValues] = useState(emptyForm);
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(false);
 
-  // Called every time the user types in an input
   function handleChange(e) {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
     setSent(false);
   }
 
-  // Called when the user clicks "Send message"
   function handleSubmit(e) {
-    e.preventDefault(); // stop the page from reloading
+    e.preventDefault();
     const newErrors = validate(values);
     setErrors(newErrors);
 
@@ -47,7 +43,6 @@ function Contact() {
     }
   }
 
-  // Red border on inputs that have an error
   function inputClass(field) {
     return errors[field] ? "form-control has-error" : "form-control";
   }

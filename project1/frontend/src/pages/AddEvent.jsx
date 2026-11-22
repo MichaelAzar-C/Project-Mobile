@@ -5,7 +5,6 @@ import EventForm from "../components/EventForm";
 import { addEvent } from "../store/eventsSlice";
 import { API_URL } from "../api";
 
-// "Submit a new event" view: POST /events
 function AddEvent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,8 +20,8 @@ function AddEvent() {
         body: JSON.stringify(eventData),
       });
       const newEvent = await response.json();
-      dispatch(addEvent(newEvent)); // add it to the Redux store too
-      navigate(`/events/${newEvent.id}`); // open the new event's page
+      dispatch(addEvent(newEvent));
+      navigate(`/events/${newEvent.id}`);
     } catch {
       setError("Could not publish the event. Is the backend running?");
       setSaving(false);

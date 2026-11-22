@@ -3,7 +3,6 @@ import EventImage from "./EventImage";
 import CalendarBadge from "./CalendarBadge";
 import { TODAY } from "../api";
 
-// One event in a grid. The whole card links to the event's details page.
 function EventCard({ event }) {
   return (
     <Link to={`/events/${event.id}`} className="event-card">

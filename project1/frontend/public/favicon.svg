@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Eventful icon: a violet tear-off calendar page with a coral top band and an "E" -->
   <rect width="64" height="64" rx="14" fill="#5b3df5"/>
   <path d="M0 14C0 6.3 6.3 0 14 0h36c7.7 0 14 6.3 14 14v6H0z" fill="#ff6b4a"/>
   <circle cx="20" cy="10" r="3" fill="#ffffff" opacity="0.85"/>

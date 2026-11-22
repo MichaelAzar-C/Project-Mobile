@@ -9,12 +9,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//READ ALL
 app.get('/events', (req, res) => {
   res.json(events);
 });
 
-//READ SELECTED ID
 app.get('/events/:id', (req, res) => {
   const event = events.find(e => e.id === parseInt(req.params.id));
   if (!event) {
@@ -23,7 +21,6 @@ app.get('/events/:id', (req, res) => {
   res.json(event);
 });
 
-//POST REQ
 app.post('/events', (req, res) => {
   const { title, description, category, date, time, location, price, capacity, isOnline, tags, hostName, hostEmail, imageUrl } = req.body;
   const newId = events.length ? Math.max(...events.map(e => e.id)) + 1 : 1;
@@ -32,7 +29,6 @@ app.post('/events', (req, res) => {
   res.status(201).json(newEvent);
 });
 
-//UPDATE REQ
 app.put('/events/:id', (req, res) => {
   const eventId = parseInt(req.params.id);
   const event = events.find(e => e.id === eventId);
@@ -44,7 +40,6 @@ app.put('/events/:id', (req, res) => {
   res.json(event);
 });
 
-//DELETE REQ
 app.delete('/events/:id', (req, res) => {
   const eventId = parseInt(req.params.id);
   const index = events.findIndex(e => e.id === eventId);

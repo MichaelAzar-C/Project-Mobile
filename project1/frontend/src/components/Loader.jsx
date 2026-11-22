@@ -1,4 +1,3 @@
-// Spinning circle with a short text, shown while data is loading
 function Loader({ text }) {
   return (
     <div className="loader">

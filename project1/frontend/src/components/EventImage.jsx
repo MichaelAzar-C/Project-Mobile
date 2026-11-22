@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-// Shows the event photo, or a colored box if the image link is empty or broken
 function EventImage({ src, alt, className = "" }) {
   const [failed, setFailed] = useState(false);
 

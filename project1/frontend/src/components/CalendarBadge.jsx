@@ -1,8 +1,7 @@
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-// Small calendar page showing the month and the day of a "YYYY-MM-DD" date, e.g. NOV / 14
 function CalendarBadge({ date, className }) {
-  const parts = date.split("-"); // ["2026", "11", "14"]
+  const parts = date.split("-");
   const month = MONTHS[Number(parts[1]) - 1];
   const day = Number(parts[2]);
 

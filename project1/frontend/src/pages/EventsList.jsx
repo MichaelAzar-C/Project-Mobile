@@ -5,16 +5,12 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { CATEGORIES } from "../api";
 
-// "Display all events" view, with a search box and category buttons.
-// loading, error and onRetry come from App as props.
 function EventsList({ loading, error, onRetry }) {
   const events = useSelector((state) => state.events.items);
 
-  // State of the search box and of the selected category ("All" = no filter)
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
-  // Keep only the events that match the search text and the category, sorted by date
   const results = events
     .filter((event) => event.title.toLowerCase().includes(search.toLowerCase()))
     .filter((event) => category === "All" || event.category === category)

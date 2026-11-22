@@ -7,7 +7,6 @@ import Message from "../components/Message";
 import { removeEvent } from "../store/eventsSlice";
 import { API_URL } from "../api";
 
-// "Delete an event" view: shows the event and asks for confirmation, then DELETE /events/:id
 function DeleteEvent() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ function DeleteEvent() {
     setDeleting(true);
     try {
       await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-      dispatch(removeEvent(event.id)); // remove it from the Redux store too
+      dispatch(removeEvent(event.id));
       navigate("/events");
     } catch {
       setError("Could not delete the event. Is the backend running?");

@@ -7,7 +7,6 @@ import Message from "../components/Message";
 import { updateEvent } from "../store/eventsSlice";
 import { API_URL } from "../api";
 
-// "Update an event" view: GET /events/:id to fill the form, then PUT /events/:id
 function EditEvent() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ function EditEvent() {
         body: JSON.stringify(eventData),
       });
       const updated = await response.json();
-      dispatch(updateEvent(updated)); // update it in the Redux store too
+      dispatch(updateEvent(updated));
       navigate(`/events/${id}`);
     } catch {
       setError("Could not save the changes. Is the backend running?");

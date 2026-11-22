@@ -19,7 +19,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // GET /events: load all events and save them in the Redux store
   async function loadEvents() {
     setLoading(true);
     setError("");
@@ -33,7 +32,6 @@ function App() {
     setLoading(false);
   }
 
-  // Load the events once, when the app starts
   useEffect(() => {
     loadEvents();
   }, []);

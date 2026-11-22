@@ -5,19 +5,15 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { TODAY } from "../api";
 
-// The 3 steps of using the app (rendered with map)
 const steps = [
   { title: "Find an event", text: "Browse concerts, workshops, sports and more, or search by name or host." },
   { title: "Check the details", text: "See the date, place, price and number of seats of every event." },
   { title: "Host your own", text: "Publish your event in a minute and edit or remove it at any time." },
 ];
 
-// Home view. loading, error and onRetry come from App as props.
 function Home({ loading, error, onRetry }) {
-  // Read the events from the Redux store
   const events = useSelector((state) => state.events.items);
 
-  // Upcoming events only, sorted by date (soonest first)
   const upcoming = events
     .filter((event) => event.date >= TODAY)
     .sort((a, b) => (a.date > b.date ? 1 : -1));
